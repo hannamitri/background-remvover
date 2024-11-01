@@ -295,7 +295,7 @@ header .row {
 
 .header__description {
   width: 100%;
-  max-width: 512px;
+  max-width: 600px;
 }
 
 .header__img--wrapper {
