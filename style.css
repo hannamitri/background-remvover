@@ -294,7 +294,8 @@ header .row {
 }
 
 .header__description {
-  width: 41.6667%;
+  width: 100%;
+  max-width: 512px;
 }
 
 .header__img--wrapper {
@@ -1675,4 +1676,8 @@ footer {
 
 #reset-button {
   display: none;
+}
+
+.header__row {
+  gap: 24px;
 }
