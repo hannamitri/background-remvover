@@ -85,7 +85,8 @@ async function uploadImage(file) {
   const options = {
     method: "POST",
     headers: {
-      "x-rapidapi-key": "34520805c8msh11e220055657d78p1c7976jsn2b13aff68bc2",
+      // "x-rapidapi-key": "34520805c8msh11e220055657d78p1c7976jsn2b13aff68bc2",
+      "x-rapidapi-key": "d0e5ce08c0msh3d48815283e3916p149b26jsna7d8edb11e4e",
       "x-rapidapi-host": "background-removal4.p.rapidapi.com",
     },
     body: data,
