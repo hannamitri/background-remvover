@@ -102,17 +102,22 @@
               />
             </div>
             <div class="header__drop--area-wrapper">
-              <div class="header__img--area-wrapper">
-                <div id="image-container">
-                  <img
-                    src="https://images.pexels.com/photos/6949535/pexels-photo-6949535.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt="Original Image"
-                    id="original-image"
-                  />
+              <div id="drop-area">
+                <p>Click or drag and drop your image here</p>
+                <div class="instructions">
+                  Supports JPG, PNG - Max file size: 5MB
                 </div>
-                <p id="loading-text">Processing image, please wait...</p>
-                <button id="remove-button" class="btn">Remove Background</button>
+                <input
+                  type="file"
+                  id="fileInput"
+                  accept="image/*"
+                  style="display: none"
+                />
+              </div>
+              <div class="header__img--area-wrapper">
                 <button id="reset-button" class="btn">Reset</button>
+                <div id="image-container"></div>
+                <p id="loading-text">Processing image, please wait...</p>
               </div>
             </div>
           </div>

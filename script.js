@@ -6,86 +6,27 @@ function closeMenu() {
   document.body.classList.remove("menu--open");
 }
 
-const dropArea = document.getElementById("drop-area");
-const fileInput = document.getElementById("fileInput");
+const removeButton = document.getElementById("remove-button");
+const resetButton = document.getElementById("reset-button");
 const imageContainer = document.getElementById("image-container");
 const loadingText = document.getElementById("loading-text");
-const resetButton = document.getElementById("reset-button");
 
-["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
-  dropArea.addEventListener(eventName, preventDefaults, false);
+const imageUrl = "https://images.pexels.com/photos/6949535/pexels-photo-6949535.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+
+removeButton.addEventListener("click", () => {
+  loadingText.style.display = "block";
+  removeButton.style.display = "none";
+  uploadImage();
 });
 
-function preventDefaults(e) {
-  e.preventDefault();
-  e.stopPropagation();
-}
-
-["dragenter", "dragover"].forEach((eventName) => {
-  dropArea.addEventListener(
-    eventName,
-    () => dropArea.classList.add("hover"),
-    false
-  );
-});
-
-["dragleave", "drop"].forEach((eventName) => {
-  dropArea.addEventListener(
-    eventName,
-    () => dropArea.classList.remove("hover"),
-    false
-  );
-});
-
-dropArea.addEventListener("drop", handleDrop, false);
-dropArea.addEventListener("click", () => fileInput.click());
-fileInput.addEventListener("change", handleFiles);
-
-function handleDrop(e) {
-  const dt = e.dataTransfer;
-  const files = dt.files;
-  handleFiles({ target: { files } });
-}
-
-function handleFiles(e) {
-  const file = e.target.files[0];
-  if (file) {
-    if (file.size > 5 * 1024 * 1024) {
-      alert("File size exceeds 5MB.");
-      return;
-    }
-    showOriginalImage(file);
-    uploadImage(file);
-  }
-}
-
-function showOriginalImage(file) {
-  imageContainer.innerHTML = "";
-  dropArea.style.display = "none";
-
-  const originalImg = document.createElement("img");
-  originalImg.alt = "Original Image";
-  originalImg.style.maxWidth = "100%";
-
-  const reader = new FileReader();
-  reader.onload = function (event) {
-    originalImg.src = event.target.result;
-    imageContainer.appendChild(originalImg);
-    loadingText.style.display = "block";
-  };
-  reader.readAsDataURL(file);
-}
-
-async function uploadImage(file) {
-  const url =
-    "https://background-removal4.p.rapidapi.com/v1/results?mode=fg-image";
+async function uploadImage() {
+  const url = "https://background-removal4.p.rapidapi.com/v1/results?mode=fg-image";
   const data = new FormData();
-  data.append("image", file);
+  data.append("url", imageUrl);
 
   const options = {
     method: "POST",
     headers: {
-      // "x-rapidapi-key": "34520805c8msh11e220055657d78p1c7976jsn2b13aff68bc2",
       "x-rapidapi-key": "d0e5ce08c0msh3d48815283e3916p149b26jsna7d8edb11e4e",
       "x-rapidapi-host": "background-removal4.p.rapidapi.com",
     },
@@ -112,13 +53,19 @@ async function uploadImage(file) {
     console.error("Error:", error);
     alert("Failed to remove the background. Please try again.");
     loadingText.style.display = "none";
-    dropArea.style.display = "flex";
+    removeButton.style.display = "block";
   }
 }
 
-// Reset the interface
 resetButton.addEventListener("click", () => {
-  imageContainer.innerHTML = "";
+  imageContainer.innerHTML = `
+    <img
+      src="${imageUrl}"
+      alt="Original Image"
+      id="original-image"
+      style="max-width: 100%;"
+    />
+  `;
   resetButton.style.display = "none";
-  dropArea.style.display = "flex";
+  removeButton.style.display = "block";
 });
