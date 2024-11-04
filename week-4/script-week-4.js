@@ -60,7 +60,6 @@ function handleFiles(e) {
 }
 
 function showOriginalImage(file) {
-  // imageContainer.innerHTML = "";
   imageContainer.style.opacity = 0.4;
   loadingSpinner.style.display = "flex";
   dropArea.style.display = "none";
