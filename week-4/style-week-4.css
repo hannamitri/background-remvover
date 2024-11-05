@@ -1645,10 +1645,10 @@ footer {
 #drop-area {
   border-radius: 10px;
   width: 100%;
-  height: 340px;
+  height: 280px;
   color: #777;
   cursor: pointer;
-  border: 2px dashed #e9ebeb;
+  border: 2px dashed #6415ff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1660,7 +1660,8 @@ footer {
 }
 
 .instructions {
-  margin-top: 10px;
+  margin-top: 16px;
+  text-align: center;
 }
 
 #loading-text {
@@ -1671,11 +1672,6 @@ footer {
 
 #image-container img {
   max-width: 100%;
-  margin-top: 20px;
-}
-
-#reset-button {
-  display: none;
 }
 
 .header__row {
@@ -1709,6 +1705,44 @@ footer {
 }
 
 .spinner__wrapper i {
-  font-size: 32px;
+  font-size: 64px;
+  color: #6415ff;
+}
+
+.drop__area--emoji {
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+
+.icon__wrapper {
+  display: none;
+  justify-content: flex-end;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.download__icon--wrapper {
+  margin-left: 12px;
+  padding: 8px 16px;
+  background-color: #6415ff;
+  cursor: pointer;
+}
+
+.download__icon--wrapper i {
   color: white;
+}
+
+.reset__icon--wrapper {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.reset__icon--wrapper:hover {
+  background-color: #f7fafc;
+  border-radius: 500px;
+}
+
+.icon__wrapper i {
+  margin-right: 4px;
 }

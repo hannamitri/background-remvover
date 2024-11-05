@@ -10,7 +10,9 @@ const dropArea = document.getElementById("drop-area");
 const fileInput = document.getElementById("fileInput");
 const imageContainer = document.getElementById("image-container");
 const loadingSpinner = document.getElementById("loading-spinner");
+const imageButtons = document.getElementById("image-buttons");
 const resetButton = document.getElementById("reset-button");
+const downloadButton = document.getElementById("download-button");
 
 ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
   dropArea.addEventListener(eventName, preventDefaults, false);
@@ -55,25 +57,50 @@ function handleFiles(e) {
       return;
     }
     showOriginalImage(file);
-    uploadImage(file);
+
+    // Uncomment the below line to use the API (download only works with the API)
+    // uploadImage(file);
+
+    // Comment the below line to use the API (download only works with the API)
+    mockUploadImage(file);
   }
 }
 
 function showOriginalImage(file) {
   imageContainer.style.opacity = 0.4;
-  loadingSpinner.style.display = "flex";
   dropArea.style.display = "none";
 
   const originalImg = document.createElement("img");
   originalImg.alt = "Original Image";
   originalImg.style.maxWidth = "100%";
-
+  originalImg.style.maxHeight = "400px";
+  
   const reader = new FileReader();
   reader.onload = function (event) {
     originalImg.src = event.target.result;
     imageContainer.appendChild(originalImg);
   };
   reader.readAsDataURL(file);
+  loadingSpinner.style.display = "flex";
+}
+
+function mockUploadImage() {
+  setTimeout(() => {
+    imageButtons.style.display = "flex";
+    imageContainer.style.opacity = 1;
+    loadingSpinner.style.display = "none";
+
+    const mockImageLink = "https://media.istockphoto.com/id/1167716273/photo/photo-of-successful-nice-enjoying-black-man-who-confidently-walks-on-his-way-to-conquering.webp?s=1024x1024&w=is&k=20&c=ECkrE6l3DX8NWUiw--P9kjs38sg7isAjy6IfOyMc4wg=";
+
+    const processedImg = document.createElement("img");
+    processedImg.src = mockImageLink;
+    processedImg.alt = "Processed Image";
+    processedImg.style.maxWidth = "100%";
+    processedImg.style.maxHeight = "400px";
+
+    imageContainer.innerHTML = "";
+    imageContainer.appendChild(processedImg);
+  }, 1000);
 }
 
 async function uploadImage(file) {
@@ -85,7 +112,7 @@ async function uploadImage(file) {
   const options = {
     method: "POST",
     headers: {
-      "x-rapidapi-key": "d0e5ce08c0msh3d48815283e3916p149b26jsna7d8edb11e4e",
+      "x-rapidapi-key": "5a520f2426msh5a93812f2f6b507p1c1095jsnaccee60b89e8",
       "x-rapidapi-host": "background-removal4.p.rapidapi.com",
     },
     body: data,
@@ -95,7 +122,7 @@ async function uploadImage(file) {
     const response = await fetch(url, options);
     const result = await response.json();
 
-    resetButton.style.display = "block";
+    imageButtons.style.display = "flex";
     imageContainer.style.opacity = 1;
     loadingSpinner.style.display = "none";
 
@@ -105,6 +132,7 @@ async function uploadImage(file) {
     processedImg.src = `data:image/png;base64,${imageLink}`;
     processedImg.alt = "Processed Image";
     processedImg.style.maxWidth = "100%";
+    processedImg.style.maxHeight = "400px";
 
     imageContainer.innerHTML = "";
     imageContainer.appendChild(processedImg);
@@ -112,11 +140,22 @@ async function uploadImage(file) {
     console.error("Error:", error);
     alert("Failed to remove the background. Please try again.");
     dropArea.style.display = "flex";
+    imageContainer.innerHTML = "";
+    loadingSpinner.style.display = "none";
   }
 }
 
 resetButton.addEventListener("click", () => {
   imageContainer.innerHTML = "";
-  resetButton.style.display = "none";
+  imageButtons.style.display = "none";
+  fileInput.value = "";
   dropArea.style.display = "flex";
+});
+
+downloadButton.addEventListener("click", () => {
+  const processedImg = imageContainer.querySelector("img");
+  const link = document.createElement("a");
+  link.href = processedImg.src;
+  link.download = "processed-image.png";
+  link.click();
 });

@@ -94,7 +94,6 @@
                 Our AI powered tool automatically removes backgrounds from your
                 images with perfect precision. Fast, free, no sign-up required.
               </p>
-              <button id="reset-button" class="btn">Reset</button>
               <p class="header__customers--title">OUR TRUSTED CUSTOMERS</p>
               <img
                 src="./assets/customers-logo-strip.680ac7c2e8ae28161d2c.png"
@@ -103,11 +102,17 @@
               />
             </div>
             <div class="header__drop--area-wrapper">
-              <div id="drop-area">
-                <p>Click or drag and drop your image here</p>
-                <div class="instructions">
-                  Supports JPG, PNG - Max file size: 5MB
+              <div id="image-buttons" class="icon__wrapper">
+                <div id="reset-button" class="reset__icon--wrapper">
+                  <i class="fas fa-solid fa-backward"></i>Reset
                 </div>
+                <div id="download-button" class="download__icon--wrapper btn">
+                  <i class="fas fa-solid fa-download"></i>Download
+                </div>
+              </div>
+              <div id="drop-area">
+                <div class="drop__area--emoji">📸</div>
+                <p>Click or drag and drop your image here</p>
                 <input
                   type="file"
                   id="fileInput"
@@ -120,6 +125,9 @@
                 <div id="loading-spinner" class="spinner__wrapper">
                   <i class="fas fa-solid fa-spinner"></i>
                 </div>
+              </div>
+              <div class="instructions">
+                Supports JPG, PNG - Max file size: 5MB
               </div>
             </div>
           </div>
