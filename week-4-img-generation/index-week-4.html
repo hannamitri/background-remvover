@@ -101,6 +101,7 @@
                 class="header__customers"
               />
             </div>
+
             <div class="header__drop--area-wrapper">
               <div
                 id="image-buttons"
@@ -114,16 +115,66 @@
                   <i class="fas fa-solid fa-download"></i> Download
                 </div>
               </div>
-
               <div id="drop-area">
-                <p>Enter text to convert to speech</p>
-                <textarea type="text" id="fileInput" placeholder="Type your text here"></textarea>
-                <button onclick="uploadTextToSpeech()">Submit</button>
-                <br />
-                <button id="playButton" style="display: none;">Play Audio</button>
-                <a id="downloadButton" style="display: none;">Download Audio</a>
+                <h2 class="form__header purple">Text to Speech Converter</h2>
+                <p class="form__title">
+                  Convert your text into natural-sounding speech
+                </p>
+                <textarea
+                  type="text"
+                  id="fileInput"
+                  class="form__textarea"
+                  placeholder="Type your text here"
+                ></textarea>
+                <button class="btn" id="submit-button">Submit</button>
+              </div>
+              <div class="header__img--area-wrapper">
+                <div id="image-container"></div>
+                <div
+                  id="loading-spinner"
+                  class="spinner__wrapper"
+                  style="display: none"
+                >
+                  <i class="fas fa-solid fa-spinner"></i>
+                </div>
               </div>
             </div>
+
+            <!-- <div class="header__drop--area-wrapper">
+              <div
+                id="image-buttons"
+                class="icon__wrapper"
+                style="display: none"
+              >
+                <div id="reset-button" class="reset__icon--wrapper">
+                  <i class="fas fa-solid fa-backward"></i> Reset
+                </div>
+                <div id="download-button" class="download__icon--wrapper btn">
+                  <i class="fas fa-solid fa-download"></i> Download
+                </div>
+              </div>
+              <div id="drop-area">
+                <h2 class="form__header purple">Text to Speech Converter</h2>
+                <p class="form__title">
+                  Convert your text into natural-sounding speech
+                </p>
+                <textarea
+                  type="text"
+                  id="fileInput"
+                  class="form__textarea"
+                  placeholder="Type your text here"
+                ></textarea>
+                <button class="btn" onclick="mockUploadTextToSpeech()">
+                  Submit
+                </button>
+              </div>
+              <div class="header__img--area-wrapper">
+                <div id="image-container"></div>
+                <div id="loading-spinner" class="spinner__wrapper">
+                  <i class="fas fa-solid fa-spinner"></i>
+                </div>
+              </div>
+            </div> -->
           </div>
         </div>
         <svg

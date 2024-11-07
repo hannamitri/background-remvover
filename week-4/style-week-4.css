@@ -1633,6 +1633,10 @@ footer {
 .header__drop--area-wrapper {
   width: 100%;
   max-width: 640px;
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .header__img--area-wrapper {

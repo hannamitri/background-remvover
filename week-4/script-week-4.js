@@ -90,7 +90,7 @@ function mockUploadImage() {
     imageContainer.style.opacity = 1;
     loadingSpinner.style.display = "none";
 
-    const mockImageLink = "https://media.istockphoto.com/id/1167716273/photo/photo-of-successful-nice-enjoying-black-man-who-confidently-walks-on-his-way-to-conquering.webp?s=1024x1024&w=is&k=20&c=ECkrE6l3DX8NWUiw--P9kjs38sg7isAjy6IfOyMc4wg=";
+    const mockImageLink = "https://i.ibb.co/0246pVw/pexels-jose-almeida-999955-2649841-removebg-preview.png";
 
     const processedImg = document.createElement("img");
     processedImg.src = mockImageLink;
