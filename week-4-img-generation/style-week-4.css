@@ -1648,7 +1648,7 @@ footer {
   color: #777;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   flex-direction: column;
   max-width: 520px;
   margin: 0 auto;
