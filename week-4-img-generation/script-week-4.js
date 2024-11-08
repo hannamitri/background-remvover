@@ -22,20 +22,21 @@ function handleTextSubmission() {
   imageButtons.style.display = "none";
 
   // Simulate text-to-speech processing
-  // mockUploadTextToSpeech(inputText);
-  uploadTextToSpeech(inputText);
+  mockUploadTextToSpeech(inputText);
+
+  // Uncomment the line below to make a real API call
+  // uploadTextToSpeech(inputText);
 }
 
 async function uploadTextToSpeech() {
   const inputText = document.getElementById("fileInput").value;
+
   if (!inputText) {
     alert("Please enter text before submitting.");
     return;
   }
 
-  console.log("inputText:", inputText);
-
-  const url = "https://us-central1-frontend-simplified.cloudfunctions.net/textToImage";
+  const url = "https://us-central1-frontend-simplified.cloudfunctions.net/textToImageGenerator";
 
   const options = {
     method: "POST",
@@ -44,42 +45,32 @@ async function uploadTextToSpeech() {
     },
     body: JSON.stringify({
       text: inputText,
-      apiKey: "HDh83f8HDHUDIdh8d8d",
+      apiKey: "43MKDdQpJSQuRtO7Eo71QC453Cd2",
     }),
   };
-  
+
   try {
     const res = await fetch(url, options);
     const result = await res.json();
-    console.log(result);
-
-    imageButtons.style.display = "flex";
-    imageContainer.style.opacity = 1;
-    loadingSpinner.style.display = "none";
-
-    const processedImg = document.createElement("img");
-    processedImg.src = result.url;
-    processedImg.alt = "Processed Image";
-    processedImg.style.maxWidth = "100%";
-    processedImg.style.maxHeight = "400px";
-
-    imageContainer.innerHTML = "";
-    imageContainer.appendChild(processedImg);
+    appendImageToContainer(result.url);
   } catch (error) {
     console.error("Error:", error);
   }
 }
 
-async function mockUploadTextToSpeech(inputText) {
+async function mockUploadTextToSpeech() {
   await new Promise((resolve) => setTimeout(resolve, 2000));
+  const url = "https://firebasestorage.googleapis.com/v0/b/frontend-simplified.appspot.com/o/Ai%20project%20images%2Fdog-in-park.jpg?alt=media&token=f81dd4d3-1029-440f-b297-da27cb4ee2b6";
+  appendImageToContainer(url);
+}
 
+function appendImageToContainer(url) {
   loadingSpinner.style.display = "none";
   imageContainer.style.opacity = 1;
   imageButtons.style.display = "flex";
 
   const processedImg = document.createElement("img");
-  processedImg.src =
-    "https://i.ibb.co/0246pVw/pexels-jose-almeida-999955-2649841-removebg-preview.png";
+  processedImg.src = url;
   processedImg.alt = "Processed Image";
   processedImg.style.maxWidth = "100%";
   processedImg.style.maxHeight = "400px";

@@ -90,7 +90,7 @@ function mockUploadImage() {
     imageContainer.style.opacity = 1;
     loadingSpinner.style.display = "none";
 
-    const mockImageLink = "https://i.ibb.co/0246pVw/pexels-jose-almeida-999955-2649841-removebg-preview.png";
+    const mockImageLink = "https://firebasestorage.googleapis.com/v0/b/frontend-simplified.appspot.com/o/Ai%20project%20images%2Ftiger-without-background.png?alt=media&token=a381a494-df56-44eb-af22-e62e5a25d90e";
 
     const processedImg = document.createElement("img");
     processedImg.src = mockImageLink;

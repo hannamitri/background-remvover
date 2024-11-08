@@ -1622,12 +1622,18 @@ footer {
   }
 }
 
+.header__row {
+  gap: 24px;
+}
+
 #drop-area,
-#loading-text,
-#image-container,
-#reset-button {
+#image-container {
   text-align: center;
   max-width: 600px;
+}
+
+#image-container img {
+  max-width: 100%;
 }
 
 .header__drop--area-wrapper {
@@ -1635,50 +1641,36 @@ footer {
   max-width: 640px;
 }
 
-.header__img--area-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-}
-
-#drop-area {
-  border-radius: 10px;
-  width: 100%;
-  color: #777;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  flex-direction: column;
-  max-width: 520px;
-  margin: 0 auto;
-}
-
-#drop-area.hover {
-  border-color: #333;
-}
-
-.instructions {
-  margin-top: 16px;
-  text-align: center;
-}
-
-#loading-text {
+.icon__wrapper {
   display: none;
-  color: #777;
-  font-size: 16px;
+  justify-content: flex-end;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.icon__wrapper i {
+  margin-right: 4px;
 }
 
-#image-container img {
-  max-width: 100%;
+.reset__icon--wrapper {
+  padding: 8px 16px;
+  cursor: pointer;
 }
 
-.header__row {
-  gap: 24px;
+.reset__icon--wrapper:hover {
+  background-color: #f7fafc;
+  border-radius: 500px;
 }
 
-.header__img--area-wrapper {
-  position: relative;
+.download__icon--wrapper {
+  margin-left: 12px;
+  padding: 8px 16px;
+  background-color: #6415ff;
+  cursor: pointer;
+}
+
+.download__icon--wrapper i {
+  color: white;
 }
 
 @keyframes spinner {
@@ -1708,50 +1700,28 @@ footer {
   color: #6415ff;
 }
 
-.drop__area--emoji {
-  font-size: 48px;
-  margin-bottom: 24px;
+.header__img--area-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+  gap: 8px;
 }
 
-.icon__wrapper {
-  display: none;
-  justify-content: flex-end;
-  border-radius: 8px;
-  font-size: 14px;
-  margin-bottom: 16px;
+#drop-area {
+  border-radius: 10px;
+  width: 100%;
+  color: #777;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
-.download__icon--wrapper {
-  margin-left: 12px;
-  padding: 8px 16px;
-  background-color: #6415ff;
-  cursor: pointer;
-}
-
-.download__icon--wrapper i {
-  color: white;
-}
-
-.reset__icon--wrapper {
-  padding: 8px 16px;
-  cursor: pointer;
-}
-
-.reset__icon--wrapper:hover {
-  background-color: #f7fafc;
-  border-radius: 500px;
-}
-
-.icon__wrapper i {
-  margin-right: 4px;
-}
-
-.form__header {
-  margin-bottom: 16px;
-}
-
-.form__title {
-  margin-bottom: 16px;
+#drop-area.hover {
+  border-color: #333;
 }
 
 .form__textarea {
